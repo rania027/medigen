@@ -1,0 +1,1072 @@
+# MEDIGEN — INDIA LOCALIZATION, COMPLETE PSO4 COMPLIANCE & FEATURE AUDIT PROMPT
+
+Act as a senior healthcare technology architect, full-stack engineer, AI/ML engineer, medical informatics specialist, cybersecurity engineer, and Indian healthcare domain expert.
+
+You are working on my existing project:
+
+**MEDIGEN – Intelligent Medical Diagnosis & Clinical Decision Support System**
+
+The project is being developed for an Indian healthcare environment and must satisfy every requirement in the official PSO4 problem statement.
+
+Your task is to inspect the ENTIRE existing codebase, identify missing functionality, correct the American-centric content, implement India-specific localization, and ensure that every PSO4 requirement is represented through a functional and demonstrable feature.
+
+This is an extension and correction of the existing project, NOT a request to create a new application.
+
+## 1. CRITICAL: PRESERVE THE EXISTING UI DESIGN
+
+Do not redesign the website.
+
+Preserve the existing Google Stitch design, including:
+- Colour palette and visual identity.
+- Typography and font hierarchy.
+- Page layouts and spacing.
+- Navigation and sidebar structure.
+- Existing cards, buttons, tables, modals and charts.
+- Existing icons, illustrations and assets.
+- Responsive behaviour.
+- Existing component styling and Tailwind classes.
+
+The existing visual identity uses warm ivory, sage, muted teal, soft mint, lavender AI accents, muted peach/coral alerts, and charcoal text.
+
+Continue using this design language.
+
+You may add missing components and fields, but they must look like natural extensions of the existing interface.
+
+Do not replace the current working components or remove existing features.
+
+---
+
+# 2. COMPLETE INDIAN LOCALIZATION
+
+The current website uses American names, terminology, locations, healthcare conventions and sample records.
+
+Replace these with realistic Indian equivalents throughout the entire application.
+
+Do not localize only the landing page. Audit every screen, form, dropdown, chart, sample patient, report, prescription, notification, dashboard, database seed, demo record and generated PDF.
+
+### A. Indian names and sample patients
+
+Replace American sample names with realistic Indian names.
+
+Use a diverse mix of Indian names from different regions, communities and genders.
+
+Examples:
+- Aarav Sharma
+- Ananya Iyer
+- Rohan Nair
+- Priya Reddy
+- Meera Kulkarni
+- Arjun Menon
+- Kavya Rao
+- Aditya Verma
+- Sneha Patil
+- Rahul Das
+
+Use these as synthetic demo identities only.
+
+Do not associate medical conditions with a person's community, religion, caste or ethnicity.
+
+Use realistic Indian doctors' names and hospital staff names too.
+
+### B. Indian locations and healthcare institutions
+
+Replace American cities, hospitals, clinics and addresses with Indian examples.
+
+Use locations such as:
+- Bengaluru, Karnataka
+- Mysuru, Karnataka
+- Chennai, Tamil Nadu
+- Hyderabad, Telangana
+- Mumbai, Maharashtra
+- Pune, Maharashtra
+- Delhi, India
+- Kochi, Kerala
+- Kolkata, West Bengal
+- Ahmedabad, Gujarat
+
+Use clearly labelled fictional demo hospitals and clinics, for example:
+- Aarogya Multispeciality Hospital
+- Jeevan Care Medical Centre
+- Namma Health Clinic
+- Sunrise Diagnostic Laboratory
+- CityCare Imaging Centre
+
+These are fictional demonstration names. Do not imply partnerships or real institutional affiliations.
+
+### C. Indian currency and financial conventions
+
+- Use INR (₹) everywhere.
+- Display amounts in Indian number formatting where appropriate.
+- Never display USD, dollars or American insurance amounts in the Indian experience.
+- If medicine price comparisons are implemented, show Indian rupee prices only when supported by a genuine, current price source.
+- Never invent medicine prices.
+
+### D. Indian date, time and contact formats
+
+Use:
+- Date format: DD-MM-YYYY.
+- Time format: 12-hour Indian time display, with AM/PM.
+- Time zone: Asia/Kolkata.
+- Phone number format: +91 XXXXX XXXXX.
+- Country: India.
+- State and district fields where relevant.
+- PIN code instead of ZIP code.
+- State instead of US state abbreviations.
+
+Store dates in a consistent backend format and localize them in the frontend.
+
+### E. Indian healthcare terminology
+
+Replace inappropriate American-specific terminology throughout the application.
+
+Examples:
+- ZIP code → PIN code.
+- State medical license → State Medical Council registration.
+- NPI → Indian medical registration number.
+- US insurance provider → Indian insurance provider, only where needed.
+- US pharmacy → Indian pharmacy.
+- US hospital → Indian hospital.
+- American emergency contact conventions → Indian emergency contact conventions.
+
+Do not introduce American-specific concepts such as NPI, Medicare, Medicaid, EHR-specific US billing workflows or US-only prescription rules unless a clearly labelled international compatibility feature is actually required.
+
+---
+
+# 3. INDIAN PATIENT REGISTRATION AND PROFILE
+
+Create an Indian-context patient registration and profile experience.
+
+Patient registration should include:
+
+- Full name.
+- Email address.
+- Indian mobile number with +91 country code.
+- Date of birth.
+- Age calculated from date of birth.
+- Gender, with inclusive options and an optional prefer-not-to-say choice.
+- Address.
+- City.
+- State.
+- District, where applicable.
+- PIN code.
+- Emergency contact name.
+- Emergency contact mobile number.
+- Blood group, optional.
+- Known allergies, optional.
+- Existing medical conditions, optional.
+- Current medications, optional.
+- Consent to process and store medical information.
+
+Do not require Aadhaar, PAN or other unnecessary government identity numbers.
+
+Do not make patient registration unnecessarily complicated.
+
+Patient records must be accessible only to the authenticated patient and appropriately authorized healthcare professionals.
+
+### Indian patient dashboard
+
+The patient dashboard should display:
+- Patient profile.
+- Blood group, if provided.
+- Allergies.
+- Existing medical conditions.
+- Current medications.
+- Recent laboratory reports.
+- Prescription history.
+- Medical imaging records.
+- Historical health trends.
+- Doctor-approved clinical summaries.
+- Upcoming appointments and follow-ups, if implemented.
+- Notifications.
+- Medical record timeline.
+
+Use simple language that Indian patients can understand.
+
+---
+
+# 4. INDIAN DOCTOR REGISTRATION AND VERIFICATION
+
+Doctor registration must use Indian medical professional credentials.
+
+Include:
+- Full name.
+- Professional email.
+- Indian mobile number.
+- Medical specialty.
+- Qualifications.
+- Medical college or institution.
+- Medical registration number.
+- State Medical Council.
+- NMC-related registration information, where applicable.
+- Hospital or clinic affiliation.
+- Years of experience, optional.
+- Supporting registration certificate or professional document upload.
+
+### Verification workflow
+
+Implement these statuses:
+1. Pending.
+2. Under review.
+3. Verified.
+4. Rejected.
+5. Additional documents required.
+
+An administrator must review and approve professional credentials before a doctor receives access to protected doctor functionality.
+
+A registration number entered by a user is not proof of identity or professional authorization.
+
+If no official live verification integration exists, use a transparent manual verification workflow.
+
+Never claim to have verified a doctor through NMC or a State Medical Council unless a genuine verification process has occurred.
+
+---
+
+# 5. ADMINISTRATOR AND ROLE SECURITY
+
+Maintain the three roles:
+
+1. Patient.
+2. Doctor.
+3. Administrator.
+
+Role selection may happen before login, but it must never grant authority.
+
+The authenticated account's backend-assigned role determines access.
+
+Implement:
+- Patient-only access to the patient's own records.
+- Verified doctor access to authorized or assigned patients.
+- Administrator access to user management and verification.
+- No public administrator registration.
+- Administrator account provisioning through a secure invitation or authorized setup.
+- No frontend role modification.
+- No post-login role-switching controls.
+- Backend-enforced authorization.
+- Session expiry and secure logout.
+- Audit logs for sensitive access and administrative actions.
+
+Use backend authentication dependencies and enforce permissions on every protected API.
+
+A patient must never be able to access doctor or admin endpoints by changing frontend state, URLs or local storage.
+
+---
+
+# 6. PSO4 REQUIREMENT: MEDICAL REPORT INTELLIGENCE
+
+This is a mandatory core feature.
+
+Implement real extraction and interpretation of uploaded laboratory reports and prescriptions.
+
+Support appropriate formats:
+- PDF.
+- JPG.
+- JPEG.
+- PNG.
+
+### Laboratory report extraction
+
+Use Gemini through the official Google GenAI SDK on the backend.
+
+Extract:
+- Patient details when available.
+- Laboratory name.
+- Report date.
+- Test name.
+- Observed result.
+- Measurement unit.
+- Reference range.
+- Abnormality indicator.
+- Relevant remarks.
+- Report metadata.
+
+Examples of Indian laboratory measurements:
+- Haemoglobin: g/dL.
+- Fasting blood glucose: mg/dL.
+- Postprandial blood glucose: mg/dL.
+- HbA1c: %.
+- Total cholesterol: mg/dL.
+- Creatinine: mg/dL.
+- TSH: µIU/mL.
+
+These are examples, not universal reference ranges. Use the reporting laboratory's reference range whenever available.
+
+Important:
+- Do not hardcode one universal reference range for every Indian laboratory.
+- Preserve the original unit.
+- Handle unit conversion carefully.
+- Flag missing, unreadable or uncertain information.
+- Allow manual correction by authorized doctors.
+- Store the original uploaded document.
+- Show the extracted result alongside its original source.
+- Record extraction status and model version.
+
+The upload-to-results workflow must be functional:
+
+Upload → Validate → Extract → Validate structured output → Store → Display → Doctor correction → Timeline.
+
+Do not use fabricated extraction results when Gemini fails.
+
+---
+
+# 7. PSO4 REQUIREMENT: PRESCRIPTION INTELLIGENCE
+
+Implement prescription upload and structured extraction.
+
+Extract:
+- Medicine name.
+- Generic ingredient, if identifiable.
+- Brand name, if identifiable.
+- Strength.
+- Dosage.
+- Frequency.
+- Duration.
+- Route of administration.
+- Instructions.
+- Prescriber details.
+- Prescription date.
+
+Support common Indian prescription notation where confidently interpretable.
+
+Examples:
+- OD.
+- BD.
+- TDS.
+- QID.
+- SOS.
+- Before food.
+- After food.
+
+Do not silently guess ambiguous handwritten instructions.
+
+Show the original prescription and extracted content together.
+
+Allow doctors to correct the extracted information.
+
+Support:
+- Prescription history.
+- Duplicate medication detection.
+- Current medication list.
+- Discontinued medication tracking.
+- Medication timeline.
+
+---
+
+# 8. PSO4 REQUIREMENT: MEDICAL IMAGE ANALYSIS
+
+Implement medical image analysis for:
+- X-rays.
+- CT scans.
+- MRI scans.
+
+The platform must support uploading medical images and displaying them in an appropriate viewer.
+
+Include:
+- Image preview.
+- Zoom.
+- Pan.
+- Brightness adjustment.
+- Contrast adjustment.
+- Original image restoration.
+- Comparison of previous and current images.
+- Patient and scan metadata.
+- Image analysis status.
+- Potentially abnormal region findings, when supported by an appropriate model.
+
+### Medical image segmentation
+
+The PSO4 problem statement explicitly expects medical image segmentation.
+
+Do not ignore this requirement.
+
+Inspect whether the project already has a real segmentation model or suitable pretrained model.
+
+If available:
+- Integrate it.
+- Generate an actual segmentation mask.
+- Display the mask as an overlay.
+- Allow the doctor to toggle the overlay.
+- Show model details and limitations.
+
+If unavailable:
+- Implement the image-analysis integration interface and a clearly labelled segmentation-unavailable state.
+- Make the architecture ready for a genuine segmentation model trained or evaluated on an appropriate dataset.
+- Do not generate decorative heatmaps and label them segmentation.
+- Do not use Gemini-generated descriptions as proof of pixel-level segmentation.
+- Do not fabricate abnormal regions or segmentation metrics.
+
+Display the distinction between AI-generated findings and doctor-confirmed findings.
+
+---
+
+# 9. PSO4 REQUIREMENT: PATIENT RISK PREDICTION
+
+Implement a historical clinical risk analysis module.
+
+It should use available longitudinal observations such as:
+- Blood glucose.
+- HbA1c.
+- Blood pressure.
+- Cholesterol.
+- BMI, if available.
+- Creatinine.
+- Relevant medical history.
+- Medication history.
+- Historical clinical observations.
+
+Support meaningful risk assessment for conditions where an appropriate validated model and data are available.
+
+Include:
+- Risk category.
+- Risk estimate, only when genuinely generated by an appropriate model.
+- Important contributing factors.
+- Missing data.
+- Model version.
+- Prediction date.
+- Explanation.
+- Clinical limitations.
+
+### Explainable AI
+
+Use SHAP or an appropriate explainability method when a compatible predictive model is available.
+
+Never invent SHAP values or display fabricated probabilities.
+
+If there is no validated trained model, clearly show that predictive analysis is not yet available and display relevant historical trends instead.
+
+Never present an experimental prediction as a confirmed diagnosis.
+
+---
+
+# 10. PSO4 REQUIREMENT: DRUG INTERACTION ANALYSIS
+
+Implement a medication safety module.
+
+It must analyze combinations of prescribed and currently recorded medications.
+
+Show:
+- Medicine names.
+- Identified interacting ingredients.
+- Interaction severity.
+- Reason for concern.
+- Available evidence or source.
+- Relevant precautions.
+- Unknown or insufficient evidence status.
+
+Use a structured, maintainable interaction knowledge source.
+
+Possible classifications:
+- Major.
+- Moderate.
+- Minor.
+- No known interaction found in the available source.
+- Unknown / insufficient information.
+
+Important:
+- Do not interpret missing interaction data as proof that a combination is safe.
+- Do not fabricate interaction warnings.
+- Do not recommend stopping or changing medication automatically.
+- Clearly instruct that medication decisions require professional review.
+
+Use Indian medicine brands and generic names in the user experience when they can be reliably identified.
+
+---
+
+# 11. PSO4 REQUIREMENT: CLINICAL HISTORY CORRELATION
+
+Build a longitudinal patient intelligence module.
+
+It must connect information from:
+- Laboratory reports.
+- Symptoms.
+- Prescriptions.
+- Medication changes.
+- Imaging findings.
+- Previous diagnoses recorded by clinicians.
+- Historical observations.
+- Doctor notes.
+- Visits and follow-ups.
+
+Display:
+- Patient health timeline.
+- Historical laboratory trends.
+- Changes in medication.
+- Changes in clinical observations.
+- Potential relationships between findings.
+- Important events.
+- Missing historical information.
+
+Example:
+
+A patient's HbA1c results may be displayed across several report dates alongside recorded medication changes and clinical observations.
+
+The platform can highlight a potential relationship for clinical review.
+
+Do not claim causation from correlation alone.
+
+Allow doctors to inspect the source records behind each insight.
+
+---
+
+# 12. PSO4 REQUIREMENT: MULTIMODAL AI ARCHITECTURE
+
+The system must integrate different types of clinical information.
+
+Support the following inputs:
+1. Structured patient information.
+2. Laboratory reports.
+3. Prescriptions.
+4. Medical images.
+5. Symptoms and clinical observations.
+6. Medical history.
+7. Medication records.
+
+Create a unified patient context that authorized clinical modules can use.
+
+Use:
+- Gemini for supported document extraction and language-based reasoning.
+- Appropriate computer vision models for imaging.
+- Suitable predictive models for risk estimation.
+- Structured clinical knowledge for medication safety.
+- RAG for evidence retrieval.
+- A knowledge graph for clinical relationships.
+
+Do not use one general-purpose LLM as a substitute for every medical model.
+
+Clearly identify which model or method produced each finding.
+
+---
+
+# 13. PSO4 REQUIREMENT: NLP AND CLINICAL AI ASSISTANT
+
+Build a contextual clinical assistant for doctors.
+
+It should understand natural-language questions and use authorized patient information.
+
+Examples:
+- "Summarize this patient's recent laboratory reports."
+- "Compare the patient's HbA1c results over time."
+- "Which laboratory values are outside the reported reference ranges?"
+- "Show the patient's current medications."
+- "Are there any known interactions in this medication list?"
+- "What changes have occurred since the previous visit?"
+- "Which findings require further clinical evaluation?"
+
+The assistant must:
+- Use the selected patient's authorized medical context.
+- Provide concise and understandable answers.
+- Link findings to the relevant patient records.
+- Distinguish extracted facts from AI interpretations.
+- Identify uncertainty and missing information.
+- Avoid definitive diagnosis.
+- Avoid prescribing or changing treatment independently.
+
+Do not fabricate medical references or citations.
+
+---
+
+# 14. PSO4 REQUIREMENT: RETRIEVAL-AUGMENTED GENERATION
+
+Implement a RAG architecture.
+
+Use an appropriate clinical knowledge collection containing reliable medical information and documents.
+
+The pipeline should include:
+
+1. Document ingestion.
+2. Text extraction.
+3. Chunking.
+4. Embedding generation.
+5. Vector storage and retrieval.
+6. Context construction.
+7. Gemini response generation.
+8. Evidence/source display.
+
+Use a suitable vector database or existing Supabase pgvector setup if already available.
+
+Display:
+- Retrieved source title.
+- Relevant passage or supporting information.
+- Source link or document reference when available.
+- Retrieval status.
+
+Patient-specific records must be isolated by authorization.
+
+Never expose one patient's retrieved records to another patient.
+
+If no supporting source is retrieved, the assistant must say so rather than invent a citation.
+
+---
+
+# 15. PSO4 REQUIREMENT: MEDICAL KNOWLEDGE GRAPH
+
+Implement an interactive patient-specific knowledge graph.
+
+Include nodes representing:
+- Patients.
+- Medical conditions.
+- Symptoms.
+- Laboratory tests.
+- Abnormal results.
+- Medications.
+- Drug interactions.
+- Imaging findings.
+- Clinical observations.
+- Medical visits.
+
+Include relationships such as:
+- Patient has observation.
+- Patient has medication.
+- Medication has ingredient.
+- Medication interacts with another medication.
+- Laboratory result belongs to a report.
+- Observation occurred on a date.
+- Clinical finding is associated with a record.
+
+Features:
+- Zoom.
+- Pan.
+- Search.
+- Filtering.
+- Node selection.
+- Relationship inspection.
+- Source record navigation.
+
+Generate graph relationships from actual stored patient data.
+
+Do not invent relationships to make the graph look populated.
+
+---
+
+# 16. PSO4 REQUIREMENT: CLINICAL DECISION SUPPORT
+
+Create one unified clinical decision-support workspace.
+
+Combine:
+- Laboratory report findings.
+- Prescription information.
+- Drug interaction warnings.
+- Imaging findings.
+- Risk analysis.
+- Historical trends.
+- Clinical correlations.
+- RAG evidence.
+- Knowledge graph relationships.
+
+For every insight show:
+- Finding.
+- Clinical relevance.
+- Severity or priority, when supported.
+- Source record.
+- Date.
+- AI model or method.
+- Supporting evidence.
+- Confidence or uncertainty only when meaningfully available.
+- Recommended next step for professional evaluation.
+
+Provide doctor actions:
+- Mark as reviewed.
+- Accept.
+- Reject.
+- Add clinical note.
+- Request further investigation.
+- Approve patient-facing summary.
+
+Clearly distinguish:
+- AI-generated findings.
+- Doctor-reviewed findings.
+- Doctor-approved summaries.
+
+The system supports clinicians; it does not independently make definitive diagnoses.
+
+---
+
+# 17. INDIAN HEALTHCARE CONTEXT AND ADDITIONAL FEATURES
+
+Implement these where appropriate and within the existing architecture.
+
+### Indian healthcare record conventions
+
+- Use Indian patient demographics and contact conventions.
+- Support Indian laboratory report formats.
+- Support Indian medicine names and generic ingredients.
+- Support Indian prescription formats.
+- Support Indian hospital and diagnostic-centre workflows.
+- Support Indian states, districts and PIN codes.
+- Support INR.
+- Support Asia/Kolkata timezone.
+
+### ABHA / ABDM readiness
+
+Consider an architecture that can support India's Ayushman Bharat Digital Mission ecosystem and ABHA-based health record workflows.
+
+However:
+- Do not claim ABDM integration unless an actual authorized integration exists.
+- Do not fabricate ABHA identifiers.
+- Do not collect ABHA numbers unnecessarily.
+- Do not claim official compliance without verification.
+- Keep this as a future integration-ready capability if credentials and APIs are unavailable.
+
+### Indian language accessibility
+
+Prepare the interface for multilingual support.
+
+At minimum:
+- English.
+- Hindi.
+- Kannada.
+
+Where practical, add Tamil, Telugu and Malayalam as future language options.
+
+Patient-facing explanations should be simple and accessible.
+
+Do not translate medical terms inaccurately. Retain the original clinical term alongside a clear explanation where necessary.
+
+### Indian emergency context
+
+Use India-appropriate emergency information and avoid American emergency numbers or services.
+
+If an emergency-contact or emergency-information feature exists, use 112 as India's emergency response number, while making clear that the application is not an emergency response service.
+
+### Privacy and consent
+
+Implement:
+- Explicit consent for medical record processing.
+- Secure storage.
+- Role-based access.
+- Patient record ownership.
+- Doctor authorization.
+- Audit trails.
+- Secure document access.
+- Data minimization.
+- Caregiver access only with patient authorization.
+- Ability to revoke delegated access.
+
+Do not claim DPDP Act compliance, ABDM compliance or any certification without a genuine compliance assessment.
+
+---
+
+# 18. EXPECTED DELIVERABLE: EXPLAINABLE CLINICAL REPORTS
+
+Generate professional downloadable PDF reports.
+
+Include:
+- MEDIGEN branding.
+- Patient name and relevant demographics.
+- Report generation date in Indian date format.
+- Hospital/doctor information when available.
+- Laboratory findings.
+- Prescription information.
+- Drug interaction analysis.
+- Imaging findings when available.
+- Risk analysis when available.
+- Historical comparisons.
+- Clinical correlations.
+- Evidence and source references.
+- AI-generated content labels.
+- Doctor notes.
+- Doctor review and approval status.
+- Medical disclaimer.
+- Page numbers.
+
+Use INR and Indian formatting.
+
+Never generate a fake doctor signature or falsely indicate approval.
+
+---
+
+# 19. ADDITIONAL FUNCTIONAL FEATURES TO AUDIT
+
+Inspect and implement missing features without removing existing functionality:
+
+### Authentication
+- Login.
+- Registration.
+- Forgot password.
+- Reset password.
+- Show/hide password.
+- OTP verification if configured.
+- Secure session management.
+- Logout.
+- Role-based routing.
+- Doctor verification.
+
+### Doctor workspace
+- Patient directory.
+- Patient search.
+- Patient profile.
+- Medical timeline.
+- Report upload.
+- Prescription upload.
+- Imaging upload.
+- AI assistant.
+- Risk insights.
+- Interaction analysis.
+- Knowledge graph.
+- Unified CDS.
+- Clinical review and approval.
+- PDF export.
+
+### Patient portal
+- Own medical records.
+- Reports.
+- Prescriptions.
+- Medical timeline.
+- Simple-language explanations.
+- Doctor-approved insights.
+- Notifications.
+- Consent settings.
+- Caregiver delegation and revocation.
+
+### Admin panel
+- User management.
+- Doctor verification.
+- Organization management.
+- Account activation/deactivation.
+- Role and permission management.
+- Audit logs.
+- Security events.
+- Platform usage analytics.
+
+### Usability
+- Search.
+- Filters.
+- Sorting.
+- Pagination.
+- Upload progress.
+- Processing status.
+- Retry failed uploads.
+- Error handling.
+- Loading states.
+- Empty states.
+- Notifications.
+- Responsive design.
+- Clear labels and tooltips.
+
+---
+
+# 20. TECHNICAL IMPLEMENTATION REQUIREMENTS
+
+Preserve the existing working technology stack.
+
+Expected architecture:
+
+Frontend:
+- React.
+- Vite.
+- Tailwind CSS.
+- Existing Stitch components.
+- Recharts or existing chart library.
+
+Backend:
+- Python.
+- FastAPI.
+- Official Google GenAI SDK.
+- Pydantic validation.
+
+Database and storage:
+- Existing Supabase/PostgreSQL setup, if already configured.
+- Supabase Storage or existing secure private storage.
+- pgvector where available for RAG.
+
+AI/ML:
+- Gemini for supported extraction and language tasks.
+- Genuine computer vision/segmentation models for image analysis.
+- Appropriate trained models for predictive analytics.
+- SHAP when compatible with the actual predictive model.
+- Structured knowledge source for drug interactions.
+
+PDF:
+- jsPDF.
+- jsPDF-AutoTable, if already used or suitable.
+
+Do not introduce unnecessary dependencies or migrate the project to a different framework.
+
+Keep API keys and credentials on the backend.
+
+Use environment variables.
+
+---
+
+# 21. COMPLETE PSO4 ACCEPTANCE CHECKLIST
+
+Before completing the task, audit every requirement below.
+
+| PSO4 requirement | Expected implementation |
+|---|---|
+| Medical report intelligence | Functional lab report and prescription extraction |
+| Medical image analysis | Image upload, viewer and supported AI findings |
+| Medical image segmentation | Genuine segmentation model integration or clearly disclosed unavailable state |
+| Patient risk prediction | Historical data-based validated model or honest unavailable state |
+| Drug interaction analysis | Structured medication interaction checking |
+| Clinical history correlation | Longitudinal timeline and relationship analysis |
+| Clinical decision support | Unified evidence-linked clinical workspace |
+| Multimodal AI architecture | Integration of structured data, documents and images |
+| NLP | Contextual medical language assistant |
+| RAG | Retrieval-backed evidence and citations |
+| Medical knowledge graph | Interactive graph based on patient records |
+| Predictive analytics | Genuine model-based analysis |
+| Explainable AI | Actual model explanations where supported |
+| Privacy-preserving processing | Consent, authorization, secure storage and audit |
+| Multiple medical data formats | PDF and supported image uploads |
+| Explainable reports | Downloadable clinical summary PDF |
+| Professional oversight | Doctor review and approval |
+
+No PSO4 requirement may be silently omitted.
+
+If a feature is not fully implemented because a model, dataset, credential or external integration is unavailable, provide:
+1. A visible feature entry.
+2. A working interface where practical.
+3. An honest unavailable or integration-required state.
+4. A clear technical integration point.
+5. No fabricated results.
+
+---
+
+# 22. IMPORTANT: SYNTHETIC INDIAN DEMO DATA
+
+Prepare a coherent synthetic Indian demonstration dataset.
+
+Use fictional patients, doctors, hospitals, reports and prescriptions.
+
+Include:
+- At least three Indian patient profiles.
+- At least two doctor profiles with different specialties.
+- A clearly labelled fictional hospital.
+- Multiple dated laboratory reports for one patient.
+- At least one prescription.
+- Relevant historical observations.
+- Example medication records.
+- Example clinical notes.
+
+The records must be internally consistent.
+
+For example, if a patient has multiple laboratory reports, the patient identity, report dates, test names and values must match across the timeline, charts and clinical summary.
+
+Clearly mark all synthetic data as DEMO DATA.
+
+Never present synthetic medical records as real patient records.
+
+---
+
+# 23. IMPLEMENTATION PRIORITY FOR THE HACKATHON
+
+This is a prototype with a short implementation and presentation window.
+
+Do not spend time rebuilding working features.
+
+Prioritize the complete end-to-end workflow:
+
+1. Indian patient and doctor authentication.
+2. Secure role-based access.
+3. Indian patient profile and realistic synthetic data.
+4. Upload and Gemini extraction of laboratory reports.
+5. Prescription extraction.
+6. Historical comparison.
+7. Drug interaction analysis using available structured data.
+8. Clinical AI assistant with patient context.
+9. Clinical history correlation.
+10. Knowledge graph.
+11. Unified clinical decision support.
+12. Doctor review and approval.
+13. Patient-facing approved summary.
+14. Downloadable PDF.
+
+Represent imaging, genuine segmentation and risk prediction honestly, with actual models integrated only where available.
+
+The goal is not to show many disconnected screens. The goal is to demonstrate a connected clinical intelligence workflow.
+
+---
+
+# 24. FINAL EXECUTION INSTRUCTIONS
+
+Follow this exact sequence:
+
+**STEP 1 — FULL PROJECT AUDIT**
+
+Inspect the existing frontend, backend, database, authentication, components, API endpoints, AI services, demo data and UI.
+
+Identify:
+- Every American-centric name, location, term, currency and format.
+- Every missing Indian healthcare convention.
+- Every missing PSO4 feature.
+- Every non-functional or placeholder feature.
+- Every security issue.
+- Every disconnected frontend/backend workflow.
+
+**STEP 2 — CREATE A REQUIREMENT MAPPING**
+
+Map every PSO4 requirement to:
+- Existing implementation.
+- Missing implementation.
+- Required modification.
+- Relevant frontend component.
+- Relevant backend service or endpoint.
+- Verification test.
+
+**STEP 3 — IMPLEMENT**
+
+Modify the actual existing project files.
+
+Do not just provide code snippets or explanations.
+
+Do not create a separate demonstration application.
+
+Do not redesign the existing interface.
+
+Do not remove any previously implemented feature.
+
+**STEP 4 — INDIA LOCALIZATION**
+
+Update all sample data, forms, labels, date and phone formatting, currency, hospital information, medical terminology, registration details, medicine examples and generated reports.
+
+**STEP 5 — TEST**
+
+Test:
+- Patient login and access.
+- Doctor login and verification.
+- Administrator access.
+- Patient data isolation.
+- Report upload and extraction.
+- Prescription extraction.
+- Historical comparison.
+- Drug interaction analysis.
+- AI assistant.
+- Knowledge graph.
+- Clinical decision support.
+- Doctor approval.
+- Patient portal.
+- PDF export.
+
+Test both successful and failed workflows.
+
+**STEP 6 — FINAL REPORT**
+
+After implementation, provide a concise report containing:
+
+1. Indian localization changes completed.
+2. PSO4 requirements implemented.
+3. Additional features implemented.
+4. Features that were already present and preserved.
+5. Features that remain incomplete and why.
+6. Backend and frontend changes made.
+7. Tests performed and their results.
+8. Any API keys, datasets, model weights or external credentials still required.
+
+Do not claim a feature is complete merely because its screen exists.
+
+A feature is complete only when its relevant workflow actually works.
+
+**FINAL NON-NEGOTIABLE RULES**
+
+- MEDIGEN is an Indian healthcare platform.
+- Every PSO4 requirement must be covered.
+- Preserve the existing Stitch design.
+- Preserve all previously implemented features.
+- Do not introduce American-centric healthcare assumptions.
+- Do not fabricate AI predictions, image segmentation, medical evidence or doctor verification.
+- Do not expose patient records across unauthorized accounts.
+- Do not claim regulatory compliance without evidence.
+- Prioritize a working end-to-end prototype.
+- Modify the existing project directly and verify the implementation.
+
+The final result should look and behave like a professional Indian clinical intelligence platform that demonstrates the full vision of PSO4 while remaining simple enough to present in a 5–10-minute hackathon demonstration.

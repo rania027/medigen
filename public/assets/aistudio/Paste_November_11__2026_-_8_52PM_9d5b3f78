@@ -1,0 +1,1319 @@
+# MASTER DEVELOPMENT PROMPT — MEDIGEN
+## Multimodal AI-Powered Medical Intelligence & Clinical Decision Support Platform
+
+### 1. YOUR ROLE
+
+Act as a senior full-stack software engineer, AI engineer, healthcare technology architect, UI integration specialist and product development expert.
+
+You are responsible for transforming my existing Stitch-generated project, named `stitch_medigen_clinical_decision_platform`, into a functional, integrated AI healthcare platform called **MEDIGEN**.
+
+Your objective is to build an impressive, working hackathon prototype that demonstrates meaningful AI capabilities, solves a real healthcare problem and provides a smooth experience for doctors, patients and administrators.
+
+Think like an experienced engineering team building a high-quality product under a strict deadline.
+
+Do not give me only suggestions, pseudocode, static mockups or disconnected components. Implement actual functionality wherever technically possible.
+
+---
+
+### 2. CRITICAL INSTRUCTIONS — DO NOT VIOLATE
+
+**A. Preserve the existing Stitch design completely.**
+
+My frontend design has already been generated using Google Stitch.
+
+You MUST:
+- Preserve the existing UI design, theme, color palette, typography, component layout, spacing, sidebar, navigation, cards, buttons, tables and dashboard structure.
+- Never redesign, replace, simplify or regenerate the existing interface.
+- Do not introduce a different theme or unrelated components.
+- Reuse existing React components, CSS, Tailwind classes, assets and design tokens.
+- Add functionality inside the existing interface.
+- Only add UI elements where a feature genuinely requires them, and style them consistently with the existing design.
+- Maintain responsiveness across desktop, tablet and mobile.
+
+If an existing component already performs part of a required feature, extend it instead of creating a duplicate.
+
+**B. Inspect the existing project before writing code.**
+
+First inspect:
+- Project folder structure.
+- React components and pages.
+- Existing routing.
+- Tailwind configuration.
+- CSS and design tokens.
+- Existing frontend state management.
+- FastAPI backend.
+- Existing API endpoints.
+- Environment variables and dependencies.
+- Existing authentication and database integration.
+
+Do not assume files or dependencies exist without checking.
+
+Do not overwrite working code unnecessarily.
+
+**C. Build a working application, not a collection of buttons.**
+
+Every visible button, tab, form, upload control, navigation link and action must have a meaningful working behaviour.
+
+Do not create fake success messages, fake AI analysis, hardcoded random results or buttons that do nothing.
+
+If a feature requires a model or external service that is not configured, clearly display its availability status and provide a graceful fallback.
+
+**D. Work efficiently.**
+
+The hackathon prototype must be completed within approximately three hours.
+
+Prioritize a connected end-to-end workflow over unnecessary architectural complexity.
+
+Use simple, maintainable code. Avoid excessive dependencies, unnecessary microservices and overengineering.
+
+---
+
+### 3. PROJECT VISION
+
+MEDIGEN is a multimodal AI-powered medical intelligence and clinical decision support platform.
+
+Healthcare information is often fragmented across:
+- Laboratory reports.
+- Medical prescriptions.
+- X-rays and medical scans.
+- Patient history.
+- Symptoms and clinical observations.
+- Medication records.
+- Previous consultations.
+
+MEDIGEN brings these sources together into one intelligent platform.
+
+It uses AI to extract, organize, compare and explain medical information, identify relevant patterns, retrieve supporting medical evidence and assist healthcare professionals in reviewing patient information.
+
+The platform must support clinical decision-making, not independently replace doctors or make final medical diagnoses.
+
+**Core objective:** Transform fragmented medical information into structured, explainable and clinically reviewable insights.
+
+---
+
+### 4. TECHNOLOGY STACK
+
+Use the following existing project architecture:
+
+**Frontend**
+- React.
+- Vite.
+- JavaScript / JSX.
+- Tailwind CSS.
+- Existing Stitch UI components.
+- Recharts for charts where appropriate.
+- jsPDF and jsPDF-AutoTable for PDF generation.
+
+**Backend**
+- Python.
+- FastAPI.
+- Pydantic.
+- REST APIs.
+- Python services organized into separate modules.
+
+**AI**
+- Google's official Gemini API through the official Google GenAI SDK.
+- Gemini for medical document extraction, multimodal document understanding, evidence-based summaries and clinical assistant responses.
+- OCR fallback where required.
+- Structured medical reference data for drug interactions.
+- Genuine trained or available models for risk prediction and image segmentation.
+
+**Storage and authentication**
+- Use the database and authentication infrastructure already present in the project.
+- If Supabase is already configured, use Supabase Auth, PostgreSQL, Storage and Row Level Security.
+- Otherwise, implement a lightweight, working prototype using the existing backend and database setup.
+- Never expose API keys in frontend code.
+
+Do not migrate the project to a different framework.
+
+---
+
+### 5. USER ROLES AND AUTHENTICATION
+
+Implement three roles.
+
+#### A. Doctor / Healthcare Professional
+
+Doctor access includes:
+- Doctor dashboard.
+- Assigned patient directory.
+- Patient medical profiles.
+- Medical report analyzer.
+- Prescription analyzer.
+- Imaging analysis.
+- Risk assessment.
+- Drug interaction checker.
+- Clinical AI assistant.
+- Medical knowledge graph.
+- Clinical decision support.
+- Clinical review and approval.
+- PDF report generation.
+- Notifications and profile settings.
+
+#### B. Patient
+
+Patient access includes:
+- Patient dashboard.
+- Personal medical records.
+- Report upload and viewing.
+- Simple-language report explanations.
+- Prescription history.
+- Health timeline.
+- Doctor-approved clinical insights.
+- Follow-up information.
+- Caregiver access management.
+- Notifications and account settings.
+
+Patients must not see unreviewed AI-generated clinical conclusions as doctor-approved advice.
+
+#### C. Administrator
+
+Admin access includes:
+- Admin dashboard.
+- User management.
+- Doctor verification.
+- Organization management.
+- Role and permission management.
+- Audit logs.
+- Security monitoring.
+- Platform analytics.
+- Notifications and settings.
+
+#### Authentication requirements
+
+Implement:
+- Login and registration.
+- Role selection.
+- Role-specific onboarding.
+- Logout.
+- Forgot password and password reset.
+- Email/mobile verification where configured.
+- OTP verification where supported.
+- Show/hide password.
+- Form validation.
+- Session expiry handling.
+- Secure session management.
+- Optional MFA if supported.
+- Access-denied and unauthorized states.
+
+Use backend-enforced role-based access control. Hiding a button in React is not sufficient security.
+
+Include a secure-session indicator in the existing Navbar if appropriate. Do not claim HIPAA compliance unless the deployment and operational controls have actually been verified.
+
+For the hackathon, provide clearly labelled demo accounts or a demo login flow if full authentication integration cannot be completed.
+
+---
+
+### 6. DOCTOR DASHBOARD
+
+Build upon the existing doctor dashboard.
+
+It must display:
+- Total assigned patients.
+- Patients requiring follow-up.
+- Reports awaiting review.
+- Recent patient activity.
+- Pending clinical approvals.
+- Important medication alerts.
+- Recent prescriptions.
+- Recent imaging studies.
+- Notifications.
+- Patient activity charts.
+- Quick-action buttons.
+
+Include a patient directory with:
+- Patient ID.
+- Patient name.
+- Age.
+- Last visit.
+- Assigned doctor.
+- Latest report status.
+- Follow-up status.
+
+Provide:
+- Search.
+- Sorting.
+- Filters.
+- Patient selection.
+- Patient profile navigation.
+
+Use synthetic demonstration data where real records are unavailable. Clearly identify demo data.
+
+---
+
+### 7. PATIENT INTELLIGENCE WORKSPACE
+
+This is the central feature of MEDIGEN.
+
+Create a unified patient workspace using the existing design.
+
+The patient profile should bring together:
+
+1. Patient overview.
+2. Medical history.
+3. Laboratory reports.
+4. Prescriptions.
+5. Imaging records.
+6. Symptoms.
+7. Clinical observations.
+8. Health timeline.
+9. AI-generated insights.
+10. Risk assessments.
+11. Medication alerts.
+12. Clinical reviews.
+
+Use tabs, panels or existing navigation patterns rather than creating too many separate pages.
+
+Display patient information in a structured, readable format.
+
+Doctors must be able to move between modules without losing the selected patient context.
+
+---
+
+### 8. AI MEDICAL REPORT ANALYZER
+
+Implement a functional document analysis service using Gemini.
+
+Create:
+
+`backend/services/ocr_service.py`
+
+#### Supported uploads
+
+- PDF.
+- JPG.
+- JPEG.
+- PNG.
+
+Support:
+- Drag and drop.
+- File browser.
+- File validation.
+- Upload progress.
+- File preview.
+- Processing status.
+- Error handling.
+- Retry.
+
+#### Medical report extraction
+
+Extract:
+- Patient information when present.
+- Report name.
+- Test names.
+- Measured values.
+- Units.
+- Reference ranges.
+- Report date.
+- Laboratory name when available.
+- Abnormal flags.
+- Critical values when explicitly supported by the report.
+
+Support common report categories:
+- CBC.
+- Blood tests.
+- Lipid profile.
+- Liver function tests.
+- Kidney function tests.
+- Thyroid profile.
+- Diabetes-related tests.
+- Urine analysis.
+- Other laboratory reports.
+
+#### Structured JSON output
+
+Return validated structured JSON, for example:
+
+{
+  "report_type": "Blood Test",
+  "report_date": "2026-11-10",
+  "tests": [
+    {
+      "test_name": "Hemoglobin",
+      "value": 12.5,
+      "unit": "g/dL",
+      "reference_range": "12-16",
+      "status": "normal",
+      "explanation": "The result is within the supplied reference range."
+    }
+  ],
+  "limitations": []
+}
+
+This is an illustrative schema, not a hardcoded result.
+
+Requirements:
+- Use Gemini structured output or strict JSON parsing with Pydantic validation.
+- Never invent missing values or reference ranges.
+- Preserve original extracted values.
+- Distinguish missing, unreadable and uncertain information.
+- Allow authorized doctors to correct extracted values.
+- Keep the original uploaded report accessible.
+- Record extraction status and source information.
+
+#### Medical interpretation
+
+For every test:
+- Display its value.
+- Display its unit.
+- Display its supplied reference range.
+- Identify normal, below-range or above-range results.
+- Highlight critical findings only when supported by appropriate source data.
+- Explain what the test measures.
+- Provide a simple-language explanation.
+- Explain the limitations of the interpretation.
+
+Do not independently diagnose a disease from an abnormal laboratory value.
+
+#### Historical comparison
+
+Compare previous and current reports.
+
+Show:
+- Previous value.
+- Current value.
+- Difference.
+- Direction of change.
+- Dates.
+- Reference range.
+- Trend chart.
+
+Use Recharts for clear visualizations.
+
+---
+
+### 9. PRESCRIPTION INTELLIGENCE
+
+Create:
+
+`backend/services/prescription_service.py`
+
+Use Gemini to extract prescription information from uploaded PDFs and images.
+
+Extract:
+- Medicine name.
+- Active ingredient when identifiable.
+- Strength.
+- Dosage.
+- Frequency.
+- Route.
+- Duration.
+- Instructions.
+- Prescribing doctor.
+- Prescription date.
+
+Provide:
+- Original prescription preview.
+- Structured medicine table.
+- Editable corrections for authorized clinicians.
+- Duplicate medicine detection.
+- Unreadable text warnings.
+- Prescription history.
+- Comparison between previous and current prescriptions.
+
+Never invent or automatically change prescribed dosages or instructions.
+
+If extraction is uncertain, flag it for manual verification.
+
+---
+
+### 10. DRUG INTERACTION AND MEDICATION SAFETY
+
+Create:
+
+`backend/services/drug_service.py`
+
+Implement a medication safety module.
+
+Features:
+- Add multiple medications.
+- Remove medications.
+- Search and normalize medicine names.
+- Identify active ingredients where available.
+- Detect duplicate medications.
+- Check drug-drug interactions.
+- Check supported contraindication information.
+- Display interaction severity.
+- Explain the potential concern.
+- Display available evidence and source.
+- Provide clinician-review guidance.
+- Identify unknown or unrecognized medications.
+
+Interaction categories:
+- Major.
+- Moderate.
+- Minor.
+- No known interaction found in the available database.
+- Unknown / insufficient information.
+
+Use a structured interaction reference database.
+
+Gemini may help normalize extracted medication names and explain retrieved information, but it must not invent interaction evidence.
+
+Also include generic medicine alternatives and price comparisons only when supported by verified product and pricing data.
+
+Clearly state that an absent interaction record does not establish that a combination is safe.
+
+---
+
+### 11. MULTIMODAL MEDICAL IMAGING
+
+Create:
+
+`backend/services/segmentation_service.py`
+
+Support:
+- X-ray.
+- CT.
+- MRI.
+
+Features:
+- Image upload.
+- Patient association.
+- Imaging type.
+- Study date.
+- Original image preview.
+- Image viewer.
+- Zoom.
+- Pan.
+- Brightness and contrast where supported.
+- Reset viewer.
+- Side-by-side comparison when prior images exist.
+- Analysis status.
+- Findings and limitations.
+- Doctor review.
+
+#### AI imaging analysis
+
+Use Gemini's supported multimodal capabilities for image understanding where appropriate.
+
+Return structured observations with:
+- Modality.
+- Observed regions.
+- Possible findings.
+- Evidence.
+- Limitations.
+- Model/service information.
+- Review status.
+
+Do not claim that a language model has performed pixel-level segmentation.
+
+#### Segmentation
+
+If a genuine segmentation model is configured:
+- Display original image.
+- Display segmentation mask.
+- Overlay mask.
+- Toggle overlay.
+- Adjust opacity.
+- Show supported region labels.
+- Display model information.
+- Allow export where supported.
+
+If no actual segmentation model is available, show an honest unavailable/demo state. Never generate decorative fake masks or bounding boxes and describe them as medical segmentation.
+
+---
+
+### 12. PATIENT RISK ASSESSMENT
+
+Create:
+
+`backend/services/risk_service.py`
+
+Implement a defined clinical prediction workflow.
+
+Features:
+- Select patient.
+- Identify the supported prediction task.
+- Collect required input features.
+- Validate data completeness.
+- Run a configured and evaluated model.
+- Display assessment history.
+- Display contributing factors.
+- Explain missing information.
+- Show model version and assessment date.
+
+Risk categories:
+- Low.
+- Moderate.
+- High.
+
+Display probabilities only when the underlying model produces valid, appropriately calibrated probabilities.
+
+Do not invent clinical risk percentages.
+
+Use a real trained model when available. If unavailable, provide a clearly labelled demonstration assessment rather than claiming a validated medical prediction.
+
+---
+
+### 13. EXPLAINABLE AI
+
+Create:
+
+`backend/services/xai_service.py`
+
+Provide human-readable explanations for AI-generated insights.
+
+Show:
+- Important input features.
+- Contributing factors.
+- Direction of contribution where supported.
+- Evidence supporting the output.
+- Missing information.
+- Model limitations.
+- Model version.
+
+Use SHAP or other genuine explainability methods when the corresponding model supports them.
+
+Gemini may convert technical explanations into readable language, but must not invent feature importance or SHAP values.
+
+Make explanations accessible to doctors and patients using different levels of detail.
+
+---
+
+### 14. LONGITUDINAL HEALTH TIMELINE AND CLINICAL CORRELATION
+
+Create a unified patient timeline.
+
+Connect:
+- Laboratory reports.
+- Prescription changes.
+- Symptoms.
+- Imaging studies.
+- Medical history.
+- Doctor visits.
+- Clinical observations.
+- Doctor-approved findings.
+
+Show:
+- Dates.
+- Events.
+- Important changes.
+- Relevant previous results.
+- Medication changes.
+- Related symptoms and observations.
+
+Implement a correlation service that identifies relevant relationships across the patient's available information.
+
+For example:
+- Compare a laboratory result across multiple dates.
+- Identify a medication change near a change in a laboratory value.
+- Connect a recorded symptom with relevant patient history.
+- Highlight missing information relevant to a clinical question.
+
+Clearly distinguish observed relationships from causal conclusions.
+
+Do not claim causation from simple correlations.
+
+---
+
+### 15. CLINICAL AI ASSISTANT — GEMINI
+
+Create a patient-context-aware clinical assistant.
+
+The assistant must allow doctors to ask questions such as:
+- Summarize this patient's recent laboratory reports.
+- Compare current and previous results.
+- Explain abnormal values.
+- Summarize the prescription history.
+- Identify possible medication interaction concerns from available data.
+- Explain relevant patient history.
+- Identify missing information.
+- Summarize the available imaging observations.
+- Prepare a clinical summary.
+
+#### Requirements
+
+- Use the official Google GenAI SDK.
+- Keep the Gemini API key on the backend.
+- Use the selected patient context only when the requesting user has authorization.
+- Send only relevant information to Gemini.
+- Clearly separate patient-specific information from general medical knowledge.
+- Include source references when available.
+- Never fabricate medical citations.
+- Return structured answers.
+- Handle unavailable context.
+- Handle API failures.
+- Display loading and error states.
+- Provide a conversation interface.
+- Allow new chats and conversation history where practical.
+- Support copy and save actions.
+
+#### Answer structure
+
+Where appropriate, return:
+
+1. Summary.
+2. Relevant patient evidence.
+3. Historical comparison.
+4. Possible concerns requiring clinician review.
+5. Missing information.
+6. Supporting references.
+7. Limitations.
+
+The assistant must not claim to make a definitive diagnosis or prescribe treatment.
+
+---
+
+### 16. MEDICAL KNOWLEDGE GRAPH
+
+Implement a lightweight interactive knowledge graph.
+
+Entities:
+- Patient.
+- Symptom.
+- Condition.
+- Test.
+- Laboratory result.
+- Medication.
+- Imaging study.
+- Observation.
+- Finding.
+
+Relationships:
+- Patient has symptom.
+- Patient has medical history.
+- Test measures biomarker.
+- Result belongs to test.
+- Medication prescribed to patient.
+- Imaging belongs to patient.
+- Observation relates to finding.
+
+Features:
+- Visual nodes and edges.
+- Zoom and pan.
+- Node selection.
+- Relationship highlighting.
+- Detail panel.
+- Search.
+- Filters.
+- Legend.
+- Reset graph.
+
+Use existing database relationships and frontend graph visualization where possible.
+
+A separate graph database is not mandatory for this prototype.
+
+The graph must reflect actual available patient data, not arbitrary decorative connections.
+
+---
+
+### 17. UNIFIED CLINICAL DECISION SUPPORT
+
+This is the central intelligence feature of MEDIGEN.
+
+Combine available information from:
+- Patient history.
+- Laboratory reports.
+- Historical trends.
+- Prescription records.
+- Drug interaction results.
+- Imaging observations.
+- Risk assessments.
+- Clinical correlation.
+- AI assistant evidence.
+
+Generate a structured clinical summary containing:
+- Patient context.
+- Important findings.
+- Abnormal laboratory results.
+- Relevant historical changes.
+- Medication safety alerts.
+- Imaging observations.
+- Risk assessment, if available.
+- Missing information.
+- Supporting evidence.
+- Limitations.
+- Recommended items for clinician review.
+
+Do not generate unsupported recommendations.
+
+#### Doctor review workflow
+
+Every generated insight should have a review status:
+
+- AI-generated.
+- Awaiting review.
+- Reviewed.
+- Approved.
+- Rejected.
+- Further investigation required.
+
+Allow the doctor to:
+- Review findings.
+- Add clinical notes.
+- Approve.
+- Reject.
+- Request further investigation.
+- Mark as reviewed.
+- Approve the patient-facing summary.
+
+Record reviewer identity and timestamps where authentication is configured.
+
+Never present an AI-generated result as a doctor-approved conclusion before approval.
+
+---
+
+### 18. PATIENT PORTAL
+
+Build a simple, understandable patient-facing interface.
+
+Features:
+- Patient dashboard.
+- Medical records.
+- Uploaded reports.
+- Simplified report explanations.
+- Prescriptions.
+- Health timeline.
+- Doctor-approved insights.
+- Follow-up information.
+- Notifications.
+- Caregiver access management.
+- Profile and privacy settings.
+
+Patients should understand:
+- What a report measures.
+- What their recorded result says.
+- Whether a doctor has reviewed it.
+- What information is available.
+- When to contact their healthcare provider.
+
+Use plain language rather than technical clinical terminology.
+
+Patients must only access their own records and authorized delegated information.
+
+---
+
+### 19. PROFESSIONAL CLINICAL PDF EXPORT
+
+Implement PDF generation in the frontend using jsPDF and jsPDF-AutoTable.
+
+Create a polished downloadable PDF.
+
+Include:
+- MEDIGEN branding.
+- Formal report heading.
+- Patient details.
+- Report generation date.
+- Report summary.
+- Laboratory results table.
+- Reference ranges.
+- Prescription details.
+- Medication interaction summary.
+- Risk assessment breakdown, if available.
+- Relevant imaging observations, if available.
+- Historical comparisons.
+- Supporting evidence.
+- Clinical notes.
+- Doctor review status.
+- Medical disclaimer.
+
+Design requirements:
+- Professional typography.
+- Clear section headings.
+- Consistent spacing.
+- Properly aligned tables.
+- Page numbers.
+- Headers and footers.
+- No raw unformatted text.
+- No browser print-window workaround.
+
+Only include available information. Clearly distinguish AI-generated and clinician-approved sections.
+
+Do not add a doctor's signature or approval unless an authorized clinician has actually approved the report.
+
+---
+
+### 20. ADMIN PANEL
+
+Implement a simple but functional administrator dashboard.
+
+#### Overview
+- Total users.
+- Active doctors.
+- Total patients.
+- Pending doctor verifications.
+- Organization count.
+- Recent platform activity.
+- Document processing statistics.
+
+#### User management
+- Search users.
+- Filter users.
+- View account details.
+- Manage account status.
+- Manage roles where authorized.
+
+#### Doctor verification
+- View doctor details.
+- View uploaded verification documents.
+- Approve.
+- Reject.
+- Request additional documents.
+- Display verification status.
+
+#### Organization management
+- Organization list.
+- Membership information.
+- Organization status.
+
+#### Security and audit
+- Activity logs.
+- Login activity.
+- Failed login events.
+- Permission changes.
+- Administrative actions.
+- Resource access history.
+
+Restrict administrator access to patient clinical information by default. Any exceptional access must be explicitly authorized and audited.
+
+---
+
+### 21. ADDITIONAL FEATURES THAT MUST NOT BE FORGOTTEN
+
+Integrate these into the existing modules:
+
+1. Global search.
+2. Advanced filters and sorting.
+3. Notification centre.
+4. Read/unread notification status.
+5. Patient-doctor assignment.
+6. Doctor verification.
+7. Caregiver delegation.
+8. Patient consent management.
+9. Original document preview.
+10. Manual correction of extracted data.
+11. Historical medical comparison.
+12. Patient-friendly explanations.
+13. AI feedback.
+14. Save and copy assistant responses.
+15. Source and evidence traceability.
+16. Model version information.
+17. Processing status.
+18. Data completeness indicators.
+19. File validation and upload progress.
+20. Error handling and retry.
+21. Loading, empty and unauthorized states.
+22. Responsive layouts.
+23. Secure file access.
+24. Audit logs.
+25. PDF export.
+26. Account settings.
+27. Password recovery.
+28. Session management.
+29. Follow-up information.
+30. Demo data clearly labelled as synthetic.
+
+Avoid creating a separate page for every item. Use the existing tabs, cards, dialogs, tables and panels.
+
+---
+
+### 22. BACKEND ARCHITECTURE
+
+Organize the existing FastAPI backend into maintainable services.
+
+Suggested structure:
+
+backend/
+  main.py
+  config.py
+  dependencies.py
+  schemas/
+    medical_report.py
+    prescription.py
+    imaging.py
+    risk.py
+    clinical_summary.py
+  services/
+    gemini_service.py
+    ocr_service.py
+    prescription_service.py
+    segmentation_service.py
+    risk_service.py
+    xai_service.py
+    drug_service.py
+    correlation_service.py
+    rag_service.py
+    clinical_decision_service.py
+    pdf_service.py
+  routers/
+    auth.py
+    patients.py
+    documents.py
+    prescriptions.py
+    imaging.py
+    risk.py
+    drugs.py
+    clinical.py
+    assistant.py
+    admin.py
+
+Adapt this structure to the existing project rather than forcing a complete migration.
+
+#### Required API endpoints
+
+Authentication:
+- POST /api/auth/login
+- POST /api/auth/register
+- POST /api/auth/logout
+- GET /api/auth/me
+
+Patients:
+- GET /api/patients
+- GET /api/patients/{patient_id}
+- POST /api/patients
+- GET /api/patients/{patient_id}/timeline
+
+Reports:
+- POST /api/documents/analyze
+- GET /api/documents/{document_id}
+- GET /api/patients/{patient_id}/reports
+
+Prescriptions:
+- POST /api/prescriptions/extract
+- GET /api/patients/{patient_id}/prescriptions
+
+Imaging:
+- POST /api/imaging/analyze
+- POST /api/imaging/segment
+
+Risk:
+- POST /api/risk/predict
+
+Drug safety:
+- POST /api/drugs/check
+
+Clinical intelligence:
+- POST /api/clinical/correlate
+- POST /api/clinical/summary
+- POST /api/clinical/reviews
+- POST /api/assistant/query
+
+PDF:
+- POST /api/reports/export
+
+Administration:
+- GET /api/admin/analytics
+- GET /api/admin/users
+- POST /api/admin/doctors/{doctor_id}/verify
+
+Health:
+- GET /api/health
+
+Implement request validation, authorization, meaningful HTTP status codes and structured error responses.
+
+Do not expose internal stack traces, API keys or sensitive patient data in error messages.
+
+Use appropriate file size limits, MIME validation, safe temporary file handling and cleanup.
+
+For longer-running AI processing, use background tasks or a simple processing-status workflow rather than blocking the application indefinitely.
+
+---
+
+### 23. DATA MANAGEMENT
+
+Use existing database infrastructure where possible.
+
+The logical data model should support:
+
+- User profiles.
+- Patients.
+- Organizations.
+- Organization memberships.
+- Doctor-patient assignments.
+- Medical records.
+- Laboratory results.
+- Prescriptions.
+- Medications.
+- Drug interactions.
+- Symptoms.
+- Clinical observations.
+- Imaging studies.
+- Imaging analyses.
+- Risk predictions.
+- Clinical insights.
+- Clinical reviews.
+- Knowledge documents.
+- Knowledge chunks.
+- Notifications.
+- Audit logs.
+- Caregiver permissions.
+
+Maintain relationships, timestamps, validation and access control.
+
+If Supabase is used:
+- Enable Row Level Security.
+- Protect private medical storage.
+- Use server-side privileged operations only.
+- Never expose the service-role key in frontend code.
+
+---
+
+### 24. SECURITY, PRIVACY AND HEALTHCARE SAFETY
+
+Implement:
+- Backend role-based authorization.
+- Secure authentication.
+- HTTPS in deployment.
+- Private medical document storage.
+- Input validation.
+- Secure API keys.
+- Restricted file access.
+- Patient consent.
+- Caregiver permissions.
+- Audit logging.
+- Safe session handling.
+- Appropriate data retention practices.
+
+Never claim HIPAA, ABDM, NDHM, ISO or other regulatory compliance without verified compliance.
+
+Use synthetic patient data for the hackathon demonstration.
+
+Display an appropriate disclaimer:
+
+"MEDIGEN provides AI-assisted medical information and clinical decision support. It does not replace professional medical judgment, diagnosis or treatment. All clinical findings must be reviewed by a qualified healthcare professional."
+
+---
+
+### 25. FRONTEND FUNCTIONALITY AND USER EXPERIENCE
+
+The existing Stitch interface must remain visually unchanged.
+
+Integrate:
+- Functional navigation.
+- Working forms.
+- API connections.
+- Upload controls.
+- Search.
+- Filters.
+- Charts.
+- Dialogs.
+- Tables.
+- Notifications.
+- Status indicators.
+- Error messages.
+- Loading states.
+- Success feedback.
+- Responsive behaviour.
+
+Use meaningful empty states.
+
+Use synthetic demo records to make the prototype understandable when no patient data exists.
+
+Avoid cluttering the interface.
+
+Doctors should see clinically relevant information.
+
+Patients should see understandable language.
+
+Administrators should see operational information.
+
+---
+
+### 26. REQUIRED END-TO-END DEMONSTRATION
+
+Build the prototype around one connected synthetic patient journey.
+
+The demo must follow this sequence:
+
+1. Log in as a doctor.
+2. Open the doctor dashboard.
+3. Select a synthetic patient.
+4. View their profile, medical history and timeline.
+5. Upload a sample laboratory report.
+6. Extract structured test values and reference ranges using Gemini.
+7. Display abnormal and normal results.
+8. Compare the report with a previous report.
+9. Upload a prescription.
+10. Extract medicine names and dosage details.
+11. Check available medication interaction records.
+12. Open the imaging viewer.
+13. Demonstrate supported image analysis or clearly labelled model availability.
+14. Open the AI assistant.
+15. Ask it to summarize the patient's available records.
+16. Display relevant evidence and sources.
+17. Show patient-history and laboratory correlations.
+18. Open the knowledge graph.
+19. Generate a unified clinical summary.
+20. Review and approve the summary as a doctor.
+21. Log in as the patient.
+22. Display the doctor-approved information.
+23. Generate and download the clinical PDF.
+24. Log in as an administrator and demonstrate user management and doctor verification.
+
+The complete demo should be smooth, understandable and visually impressive.
+
+---
+
+### 27. THREE-HOUR IMPLEMENTATION PRIORITY
+
+The prototype has a strict three-hour development deadline.
+
+Do not attempt to build every advanced clinical model from scratch.
+
+Use this implementation order:
+
+**PRIORITY 1 — MUST WORK**
+- Existing Stitch UI integration.
+- Login/demo role selection.
+- Role-based navigation and authorization.
+- Doctor dashboard.
+- Patient profiles.
+- Laboratory report upload and Gemini extraction.
+- Structured report results.
+- Abnormal value highlighting.
+- Historical comparison.
+- Prescription extraction.
+- Structured drug interaction checks.
+- Patient timeline.
+- Gemini clinical assistant with patient context.
+- Unified clinical summary.
+- Doctor review and approval.
+- Patient-approved summary view.
+- PDF generation.
+
+**PRIORITY 2 — IMPLEMENT IF TIME PERMITS**
+- Imaging analysis.
+- Genuine segmentation integration.
+- Risk model integration.
+- Explainability.
+- Knowledge graph.
+- Admin verification.
+- Notifications.
+- Audit log views.
+- Caregiver permissions.
+
+All modules must remain represented in the application. Do not delete requirements simply because implementation time is limited.
+
+Where an advanced feature cannot be fully implemented, show a working upload, interface, processing status and honest availability state. Do not simulate medical accuracy.
+
+---
+
+### 28. CODE QUALITY AND TESTING
+
+Follow these requirements:
+
+- Use clean, reusable components.
+- Separate API calls from UI components.
+- Use a centralized API client.
+- Use environment variables.
+- Validate backend inputs.
+- Handle network failures.
+- Handle Gemini rate limits and API failures.
+- Handle unsupported files.
+- Prevent duplicate submissions.
+- Avoid unnecessary repeated AI calls.
+- Maintain patient context across modules.
+- Avoid breaking existing routes.
+- Avoid unnecessary package installations.
+- Do not leave placeholder functions disguised as completed functionality.
+
+Test:
+- All three role flows.
+- Login and logout.
+- Unauthorized access.
+- Patient selection.
+- Report upload.
+- Gemini extraction.
+- Missing and unreadable data.
+- Prescription extraction.
+- Drug checking.
+- AI assistant.
+- Clinical approval.
+- PDF generation.
+- Admin operations.
+- Desktop and mobile layouts.
+
+---
+
+### 29. EXECUTION INSTRUCTIONS — FOLLOW THIS ORDER
+
+Do not generate a huge replacement project or simply return code snippets without integrating them.
+
+Work in the following sequence:
+
+**STEP 1 — PROJECT AUDIT**
+
+Inspect the existing project and explain briefly:
+- Existing architecture.
+- Existing components.
+- Existing API routes.
+- What already works.
+- What is missing.
+- What files need modification.
+- What new files are necessary.
+
+**STEP 2 — IMPLEMENTATION PLAN**
+
+Provide a short implementation plan that respects the existing architecture and three-hour deadline.
+
+Do not ask unnecessary questions if the repository already contains the required information.
+
+**STEP 3 — CORE INTEGRATION**
+
+Implement authentication, role-based navigation, patient management and the existing dashboard integration.
+
+**STEP 4 — AI SERVICES**
+
+Implement the Gemini-powered report and prescription extraction, drug checking, clinical assistant and clinical summary services.
+
+**STEP 5 — CLINICAL WORKFLOW**
+
+Connect patient history, laboratory trends, medication information, imaging status, risk information and doctor review.
+
+**STEP 6 — REMAINING MODULES**
+
+Implement the imaging, risk, explainability, knowledge graph, admin, notification and caregiver functionality to the extent supported by available models and infrastructure.
+
+**STEP 7 — PDF AND FINAL INTEGRATION**
+
+Implement professional PDF generation and connect the patient portal to doctor-approved information.
+
+**STEP 8 — TEST AND FIX**
+
+Run the project, test its endpoints and frontend flows, fix errors and verify the main demonstration journey.
+
+Do not stop after describing the implementation. Actually make the changes in the available project.
+
+If a tool, model, API key or database is missing, identify it explicitly and continue implementing the remaining features.
+
+---
+
+### 30. FINAL ACCEPTANCE CRITERIA
+
+MEDIGEN is ready for the hackathon demonstration when:
+
+1. The original Stitch design remains intact.
+2. The application runs without major errors.
+3. The three user roles can be demonstrated.
+4. The doctor can select a patient.
+5. A medical report can be uploaded and analyzed.
+6. Structured results can be displayed.
+7. Historical values can be compared.
+8. A prescription can be extracted.
+9. Available drug interaction information can be checked.
+10. The AI assistant can answer using authorized patient context.
+11. The platform can generate a structured clinical summary.
+12. A doctor can review and approve findings.
+13. The patient portal displays approved information.
+14. A professional PDF can be downloaded.
+15. Admin functionality can be demonstrated.
+16. Imaging, risk and explainability modules have honest and understandable availability states.
+17. The application handles errors gracefully.
+18. The demonstration can be completed without broken navigation or dead buttons.
+
+### FINAL DIRECTIVE
+
+Build MEDIGEN as a unified, intelligent, professional healthcare platform — not as a generic hospital management website and not as a collection of unrelated AI features.
+
+Preserve my Stitch design.
+
+Prioritize real functionality, explainable AI, patient safety, seamless integration and a polished demonstration.
+
+Do not sacrifice essential problem-statement features.
+
+Do not fabricate AI results, model performance, medical evidence or regulatory compliance.
+
+Make sensible engineering decisions independently, inspect the repository before editing, and implement the best working version possible within the deadline.
+
+**The final outcome must be a connected, demonstrable MEDIGEN prototype that looks professional, works reliably and clearly communicates its real-world value.**

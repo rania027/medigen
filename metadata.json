@@ -1,0 +1,6 @@
+{
+  "name": "MEDIGEN — Multimodal Clinical Decision Support System",
+  "description": "Haute-Clinical multimodal medical diagnosis and CDSS platform with certified Indian medical compliance, RSSDI guidelines, and strict role-based access control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
