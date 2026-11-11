@@ -13,6 +13,7 @@ import { PatientPortal } from './components/PatientPortal.tsx';
 import { AdminPanel } from './components/AdminPanel.tsx';
 import { MedicalReportUpload } from './components/extraction/MedicalReportUpload.tsx';
 import { PrescriptionUpload } from './components/extraction/PrescriptionUpload.tsx';
+import { FloatingClinicalChatbot } from './components/FloatingClinicalChatbot.tsx';
 
 import {
   SYNTHETIC_PATIENTS,
@@ -455,6 +456,16 @@ export default function App() {
           <AdminPanel auditLogs={auditLogs} authToken={authToken || undefined} />
         )}
       </main>
+
+      {/* Floating Context-Aware Gemini Clinical Co-Pilot Chatbot */}
+      {currentUser && (currentUser.role === 'doctor' || currentUser.role === 'patient') && (
+        <FloatingClinicalChatbot
+          patient={selectedPatient}
+          latestLab={latestLab}
+          medications={medications}
+          drugInteractions={drugInteractions}
+        />
+      )}
 
       {/* Haute-Clinical Footer */}
       <footer className="mt-auto border-t border-[#3a6364]/10 bg-white/70 py-6 text-xs text-[#717978]">
